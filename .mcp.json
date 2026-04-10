@@ -1,0 +1,7 @@
+{
+  "mcpServers": {
+    "wombat": {
+      "command": "./wombat-demo.sh"
+    }
+  }
+}

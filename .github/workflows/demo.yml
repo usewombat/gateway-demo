@@ -1,0 +1,25 @@
+name: Demo — AI-triggered workflow
+
+# This workflow exists to demonstrate Wombat's permission model.
+# An AI agent with r-x- on this repo can trigger it via actions_run_trigger,
+# but cannot push directly to main — Wombat denies it before GitHub sees the call.
+
+on:
+  workflow_dispatch:
+    inputs:
+      reason:
+        description: "Why are you triggering this?"
+        required: false
+        default: "manual trigger"
+
+jobs:
+  demo:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Acknowledge trigger
+        run: |
+          echo "Triggered by: ${{ github.actor }}"
+          echo "Reason: ${{ inputs.reason }}"
+          echo ""
+          echo "Wombat allowed this call (r-x- on the repo)."
+          echo "Try asking the agent to push directly to main — Wombat will deny it."

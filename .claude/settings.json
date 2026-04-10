@@ -1,0 +1,8 @@
+{
+    "permissions": {
+        "deny": [
+            "Read(permissions.template.json)",
+            "Grep(permissions.template.json)"
+        ]
+    }
+}

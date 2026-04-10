@@ -1,0 +1,25 @@
+{
+  "version": "0.1",
+  "description": "Wombat demo — read + CI trigger, no direct pushes to main",
+  "umask": "----",
+  "grants": [
+    {
+      "resource": "github/{{REPO}}",
+      "mode": "r-x-",
+      "comment": "Read repo and trigger CI workflows"
+    },
+    {
+      "resource": "github/{{REPO}}/main",
+      "mode": "r---",
+      "comment": "Main is read-only — no direct pushes"
+    },
+    {
+      "resource": "github/{{REPO}}/feature/*",
+      "mode": "rw--",
+      "comment": "Push freely to feature branches"
+    }
+  ],
+  "sudo": {
+    "enabled": false
+  }
+}
