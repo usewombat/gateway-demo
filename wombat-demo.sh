@@ -20,7 +20,7 @@ if [ -z "$REPO" ]; then
 fi
 
 # Expand {{REPO}} in the template into a temp file
-PERMISSIONS=$(mktemp /tmp/wombat-permissions-XXXXXX.json)
+PERMISSIONS=$(mktemp /tmp/wombat-permissions-XXXXXX)
 trap "rm -f '$PERMISSIONS'" EXIT
 sed "s|{{REPO}}|$REPO|g" "$DEMO_DIR/permissions.template.json" > "$PERMISSIONS"
 
